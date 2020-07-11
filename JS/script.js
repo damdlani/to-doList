@@ -17,22 +17,10 @@
             done: true,
         },
     ]
-    /*  funkcja do renderowania, odpalana za każdą zmianą
-        for each task of tasks dodaje do elementu todo__tasks element listy z buttonami 
-        //<li class="todo__task"><button>test</button><span>tekst</span><button>tekst</button></li>
- */
-    const render = () => {
-
-        tasks.forEach((task, index) => {
-            tasksListElement.innerHTML += `<li class="todo__task"><button class="todo__button todo__button--check js-checkButton"></button><span class="todo__span">${task.content}</span><button class="todo__button todo__button--remove js-removeButton"></button></li>`
-        });
-    }
-
-    const clearInput = () => {
-        let inputValue = (document.querySelector(".js-input"))
-        if (inputValue.value) {
-            inputValue.value = ""
-        }
+    const render = (tasks) => {
+        for (task of tasks) {
+            tasksListElement.innerHTML += `<li class="todo__task"><button class="todo__button todo__button--check js-checkButton"><i class="fas fa-check todo__checkMark"></i></button><span class="todo__span">${task.content}</span><button class="todo__button todo__button--remove js-removeButton"><i class="fas fa-trash-alt"></i></button></li>`
+        };
     }
     const onFormSubmit = () => {
         if (input.value.trim()) {
@@ -40,25 +28,22 @@
                 content: `${input.value}`
             });
             tasksListElement.innerHTML = "";
-            render();
-        } else {
-            // render()
+            render(tasks);
         };
     }
-    const setFocus = () => {
+    const setFocusClear = () => {
+        input.value = "";
         input.focus();
     }
 
     const init = () => {
         const formElement = document.querySelector(".js-form");
-        const submitButtonElement = document.querySelector(".js-buttonSubmit");
         formElement.addEventListener("submit", (e) => {
             e.preventDefault();
             onFormSubmit();
-            clearInput();
-            setFocus();
+            setFocusClear();
         });
-        render();
+        render(tasks);
     }
 
     init()

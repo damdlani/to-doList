@@ -80,8 +80,7 @@
 .todo__button {
     flex-shrink: 0;
     align-self: stretch;
-    padding: 10px;
-    height: 10px;
+    padding: 20px;
     border: none;
 }
 
@@ -105,4 +104,7 @@
     text-align: justify;
     padding: 5px 20px;
     flex-grow: 1;
+}
+.todo__checkMark {
+    opacity: 0;
 }
