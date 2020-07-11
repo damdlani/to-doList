@@ -63,6 +63,7 @@
 
 .todo__ul {
     padding: 30px;
+    margin: 0;
     list-style: none;
 }
 
@@ -80,7 +81,7 @@
 .todo__button {
     flex-shrink: 0;
     align-self: stretch;
-    padding: 20px;
+    padding: 10px;
     border: none;
 }
 
@@ -104,6 +105,9 @@
     text-align: justify;
     padding: 5px 20px;
     flex-grow: 1;
+}
+.todo__span--done {
+    text-decoration: line-through;
 }
 .todo__checkMark {
     opacity: 0;
