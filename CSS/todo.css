@@ -11,14 +11,40 @@
 }
 .todo__title {
     margin: 0 0 3px;
-    padding: 30px;
+    padding: 20px 30px;
     background-color: white;
-}
-.todo__form {
-    background-color: white;
-    padding: 30px;
 }
 .todo__tasks {
     min-height: 100px;
     background-color: white;
+}
+.todo__form {
+    display: flex;
+    /* align-items: center; */
+    flex-wrap: wrap;
+    background-color: white;
+    padding: 30px;
+}
+.todo__input {
+    flex-grow: 5;
+    /* width: 100%; */ /*do dodania w media*/
+    margin: 5px;
+    padding: 5px 5px 5px 10px;
+}
+.todo__submit {
+    /* width: 100%; *//*do dodania w media*/
+    flex-grow: 1;
+    padding: 10px 0;
+    margin: 5px;
+    background-color: teal;
+    border: none;
+    color: white;
+    font-size: 16px;
+}
+.todo__submit:hover {
+    cursor: pointer;
+    color: #ddd;
+}
+.todo__submit:active {
+    color: black;
 }
