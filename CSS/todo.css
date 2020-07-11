@@ -1,0 +1,24 @@
+.todo {
+    padding: 10px 20px;
+}
+.todo__new {
+    padding: 10px;
+    margin: 10px 0;
+}
+.todo__list {
+    padding: 10px;
+    margin: 10px 0;
+}
+.todo__title {
+    margin: 0 0 3px;
+    padding: 30px;
+    background-color: white;
+}
+.todo__form {
+    background-color: white;
+    padding: 30px;
+}
+.todo__tasks {
+    min-height: 100px;
+    background-color: white;
+}
