@@ -1,23 +1,28 @@
 .todo {
     padding: 10px 20px;
 }
+
 .todo__new {
     padding: 10px;
     margin: 10px 0;
 }
+
 .todo__list {
     padding: 10px;
     margin: 10px 0;
 }
+
 .todo__title {
     margin: 0 0 3px;
     padding: 20px 30px;
     background-color: white;
 }
+
 .todo__tasks {
     min-height: 100px;
     background-color: white;
 }
+
 .todo__form {
     display: flex;
     /* align-items: center; */
@@ -25,14 +30,18 @@
     background-color: white;
     padding: 30px;
 }
+
 .todo__input {
     flex-grow: 5;
-    /* width: 100%; */ /*do dodania w media*/
+    /* width: 100%; */
+    /*do dodania w media*/
     margin: 5px;
     padding: 5px 5px 5px 10px;
 }
+
 .todo__submit {
-    /* width: 100%; *//*do dodania w media*/
+    /* width: 100%; */
+    /*do dodania w media*/
     flex-grow: 1;
     padding: 10px 0;
     margin: 5px;
@@ -41,17 +50,22 @@
     color: white;
     font-size: 16px;
 }
+
 .todo__submit:hover {
     cursor: pointer;
     color: #ddd;
 }
+
 .todo__submit:active {
     color: black;
+    outline: none;
 }
+
 .todo__ul {
     padding: 30px;
     list-style: none;
 }
+
 .todo__task {
     /* background-color: brown; */
     display: flex;
@@ -62,6 +76,7 @@
     margin: 10px;
     border-bottom: 1px solid #ccc;
 }
+
 .todo__button {
     flex-shrink: 0;
     align-self: stretch;
@@ -69,15 +84,23 @@
     height: 10px;
     border: none;
 }
+
 .todo__button:hover {
     cursor: pointer;
 }
+
+.todo__button:active {
+    outline: none;
+}
+
 .todo__button--check {
     background-color: rgb(5, 104, 10);
 }
+
 .todo__button--remove {
     background-color: rgb(104, 5, 5);
 }
+
 .todo__span {
     text-align: justify;
     padding: 5px 20px;
