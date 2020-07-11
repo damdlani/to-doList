@@ -23,7 +23,7 @@
     const render = () => {
 
         tasks.forEach((task, index) => {
-            tasksListElement.innerHTML += `<li class="todo__task"><button>test</button><span>${task.content}</span><button>tekst</button></li>`
+            tasksListElement.innerHTML += `<li class="todo__task"><button class="todo__button todo__button--check js-checkButton"></button><span class="todo__span">${task.content}</span><button class="todo__button todo__button--remove js-removeButton"></button></li>`
         });
     }
 
@@ -42,7 +42,7 @@
             tasks.push(task = {
                 content: `${input.value}`
             });
-            tasksListElement.innerHTML += `<li class="todo__task"><button>test</button><span>${task.content}</span><button>tekst</button></li>`;
+            tasksListElement.innerHTML += `<li class="todo__task"><button class="todo__button todo__button--check js-checkButton"></button><span class="todo__span">${task.content}</span><button class="todo__button todo__button--remove js-removeButton"></button></li>`;
         } else {input.setAttribute("autofocus", "")}
         console.log(tasks);
     }
