@@ -11,8 +11,10 @@ body {
 }
 
 .container {
+    position: relative;
     width: 100%;
     max-width: 1000px;
+    min-height: 100vh;
     padding: 50px;
     margin: 0 auto;
 }
