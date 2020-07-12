@@ -27,7 +27,7 @@
         let htmlString = "";
         for (task of tasks) {
             htmlString += `<li class="todo__task">
-            <button class="todo__button todo__button--check js-checkButton"><i class="fas fa-check todo__checkMark"></i></button>
+            <button class="todo__button todo__button--check js-checkButton">${task.done ? " <i class=\"fas fa-check\"></i>" : ""}</button>
             <span ${task.done ? " style=\"text-decoration: line-through\"" : ""} class="todo__span js-taskSpan">
             ${task.content}
             </span>
