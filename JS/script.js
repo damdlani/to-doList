@@ -28,17 +28,26 @@
     const render = () => {
         const tasksListElement = document.querySelector(".js-tasksList");
         let htmlString = "";
-        for (task of tasks) {
-            htmlString += `<li class="todo__task">
-            <button class="todo__button todo__button--check js-checkButton">${task.done ? " <i class=\"fas fa-check\"></i>" : ""}</button>
-            <span ${task.done ? " style=\"text-decoration: line-through; font-style: italic;\"" : ""} class="todo__span js-taskSpan">
-            ${task.content}
-            </span>
-            <button class="todo__button todo__button--remove js-removeButton"><i class="fas fa-trash-alt"></i></button>
-            </li>`
+        if (tasks.length !== 0){
+            for (task of tasks) {
+                htmlString += `<li class="todo__task">
+                <button class="todo__button todo__button--check js-checkButton">${task.done ? " <i class=\"fas fa-check\"></i>" : ""}</button>
+                <span ${task.done ? " style=\"text-decoration: line-through; font-style: italic;\"" : ""} class="todo__span js-taskSpan">
+                ${task.content}
+                </span>
+                <button class="todo__button todo__button--remove js-removeButton"><i class="fas fa-trash-alt"></i></button>
+                </li>`
+            }
+        } else {
+            htmlString = `<li class="todo__empty">Nie masz na razie żadnych zadań.</li>`
         }
         tasksListElement.innerHTML = htmlString;
+        
+        bind();
 
+    };
+
+    const bind = () => {
         const checkButtons = document.querySelectorAll(".js-checkButton");
         const removeButtons = document.querySelectorAll(".js-removeButton");
 
@@ -53,7 +62,7 @@
                 removeTask(index);
             })
         });
-    };
+    }
 
     const onFormSubmit = (input) => {
         if (input.value.trim()) {

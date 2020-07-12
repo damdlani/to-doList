@@ -116,3 +116,9 @@
 .todo__checkMark {
     opacity: 0;
 }
+.todo__empty {
+    font-style: italic;
+    font-size: 16px;
+    text-align: center;
+    margin-top: 10px;
+}
