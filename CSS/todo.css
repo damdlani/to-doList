@@ -84,6 +84,7 @@
     align-self: stretch;
     padding: 10px;
     border: none;
+    outline: none;
 }
 
 .todo__button:hover {
@@ -101,7 +102,9 @@
 .todo__button--remove {
     background-color: rgb(104, 5, 5);
 }
-
+.todo__button--remove:active {
+    color: #333333;
+}
 .todo__span {
     text-align: justify;
     padding: 5px 20px;
