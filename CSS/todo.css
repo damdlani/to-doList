@@ -17,6 +17,11 @@
     padding: 20px 30px;
     background-color: white;
 }
+@media (max-width: 768px){
+    .todo__title {
+        font-size: 22px;
+    }
+}
 
 .todo__tasks {
     min-height: 100px;
@@ -25,7 +30,6 @@
 
 .todo__form {
     display: flex;
-    /* align-items: center; */
     flex-wrap: wrap;
     background-color: white;
     padding: 30px;
@@ -33,15 +37,12 @@
 
 .todo__input {
     flex-grow: 5;
-    /* width: 100%; */
-    /*do dodania w media*/
     margin: 5px;
     padding: 5px 5px 5px 10px;
 }
 
 .todo__submit {
-    /* width: 100%; */
-    /*do dodania w media*/
+
     flex-grow: 1;
     padding: 10px;
     margin: 5px;
@@ -49,6 +50,15 @@
     border: none;
     color: white;
     font-size: 16px;
+}
+@media (max-width: 768px) {
+    .todo__input {
+        width: 100%;
+    }
+    
+    .todo__submit {
+        width: 100%;
+    }
 }
 
 .todo__submit:hover {
@@ -66,9 +76,13 @@
     margin: 0;
     list-style: none;
 }
+@media (max-width: 768px){
+    .todo__ul {
+        padding: 5px;
+    }
+}
 
 .todo__task {
-    /* background-color: brown; */
     display: flex;
     flex-wrap: nowrap;
     align-items: center;
@@ -81,26 +95,35 @@
 .todo__button {
     flex-shrink: 0;
     flex-basis: 40px;
-    align-self: stretch;
+    height: 40px;
     padding: 10px;
     border: none;
     outline: none;
 }
-
+@media (max-width: 400px){
+    .todo__button {
+        flex-basis: 30px;
+        height: 30px;
+        font-size: 10px;
+    }
+}
+.todo__button:focus {
+    outline: solid black 1px;
+}
 .todo__button:hover {
     cursor: pointer;
 }
-
-.todo__button:active {
-    outline: none;
-}
-
 .todo__button--check {
     background-color: rgb(5, 104, 10);
 }
 
 .todo__button--remove {
     background-color: rgb(104, 5, 5);
+}
+@media (max-width: 400px){
+    .todo__button--remove {
+        font-size: 12px;
+    }
 }
 .todo__button--remove:active {
     color: #333333;
@@ -110,15 +133,21 @@
     padding: 5px 20px;
     flex-grow: 1;
 }
-.todo__span--done {
-    text-decoration: line-through;
-}
-.todo__checkMark {
-    opacity: 0;
+@media (max-width: 768px){
+    .todo__span {
+        padding: 5px;
+    }
 }
 .todo__empty {
     font-style: italic;
     font-size: 16px;
     text-align: center;
     margin-top: 10px;
+}
+@media (max-width: 400px){
+    .todo__empty {
+        font-size: 12px;
+        margin-top: 20px;
+
+    }
 }

@@ -1,20 +1,7 @@
 {
     console.log("Good morning, Vietnam!");
 
-    const tasks = [
-        task = {
-            content: "test",
-            done: true,
-        },
-        task = {
-            content: "test",
-            done: false,
-        },
-        task = {
-            content: "test",
-            done: true,
-        },
-    ];
+    const tasks = [];
 
     const setDone = (index) => {
         tasks[index].done === false ? tasks[index].done = true : tasks[index].done = false;
