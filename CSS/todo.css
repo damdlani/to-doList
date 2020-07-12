@@ -137,7 +137,7 @@
 }
 @media (max-width: 768px){
     .todo__span {
-        padding: 5px;
+        padding: 10px;
     }
 }
 .todo__empty {
