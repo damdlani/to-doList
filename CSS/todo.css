@@ -85,7 +85,7 @@
 .todo__task {
     display: flex;
     flex-wrap: nowrap;
-    align-items: center;
+    align-items: stretch;
     justify-content: space-between;
     padding: 15px 10px;
     margin: 10px;
@@ -95,6 +95,7 @@
 .todo__button {
     flex-shrink: 0;
     flex-basis: 40px;
+    align-self: center;
     height: 40px;
     padding: 10px;
     border: none;
@@ -132,6 +133,7 @@
     text-align: justify;
     padding: 5px 20px;
     flex-grow: 1;
+    line-break: anywhere;
 }
 @media (max-width: 768px){
     .todo__span {
