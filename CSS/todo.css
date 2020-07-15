@@ -117,7 +117,6 @@
 .todo__button--check {
     background-color: rgb(5, 104, 10);
 }
-
 .todo__button--remove {
     background-color: rgb(104, 5, 5);
 }
@@ -135,10 +134,15 @@
     flex-grow: 1;
     line-break: anywhere;
 }
+
 @media (max-width: 768px){
     .todo__span {
         padding: 10px;
     }
+}
+.todo__span--done {
+    text-decoration: line-through;
+    font-style: italic;
 }
 .todo__empty {
     font-style: italic;

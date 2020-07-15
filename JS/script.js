@@ -4,7 +4,7 @@
     const tasks = [];
 
     const setDone = (index) => {
-        tasks[index].done === false ? tasks[index].done = true : tasks[index].done = false;
+        tasks[index].done = !tasks[index].done;
         render();
     }
     const removeTask = (index) => {
@@ -19,7 +19,7 @@
             for (task of tasks) {
                 htmlString += `<li class="todo__task">
                 <button class="todo__button todo__button--check js-checkButton">${task.done ? " <i class=\"fas fa-check\"></i>" : ""}</button>
-                <span ${task.done ? " style=\"text-decoration: line-through; font-style: italic;\"" : ""} class="todo__span js-taskSpan">
+                <span class="todo__span ${task.done ? "todo__span--done" : ""} js-taskSpan">
                 ${task.content}
                 </span>
                 <button class="todo__button todo__button--remove js-removeButton"><i class="fas fa-trash-alt"></i></button>
