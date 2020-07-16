@@ -1,22 +1,31 @@
 {
     console.log("Good morning, Vietnam!");
 
-    let tasks = [];
+    let tasks = [
+        {content: 'test', done: true}
+    ];
 
     const addNewTask = (input) => {
         tasks = [
             ...tasks,
             {
                 content: `${input.value}`,
-                done: false
+                done: false,
             },
         ]
     }
 
-    const setDone = (index) => {
-        tasks[index].done = !tasks[index].done;
+    const setDone = (editIndex) => {
+        const isDone = tasks[editIndex].done;
+        tasks = [
+            ...tasks.slice(0, editIndex),
+            {...tasks[editIndex], done: !isDone},
+            ...tasks.slice(editIndex + 1),
+        ]
+        console.log(tasks)
         render();
     }
+
     const removeTask = (index) => {
         tasks.splice(index, 1);
         render();
