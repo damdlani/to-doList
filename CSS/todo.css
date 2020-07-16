@@ -43,18 +43,22 @@
     margin: 10px;
     border: none;
     background-color: transparent;
-    color: hsl(180, 66%, 28%);
+    color: hsl(180, 66%, 20%);
     font-size: 18px;
     transition: color .2s, transform .2s;
 }
 
 .todo__doneButton:hover {
-    color: hsl(180, 66%, 20%);
+    color: hsl(180, 66%, 40%);
     cursor: pointer;
 }
 
 .todo__doneButton:active {
     transform: scale(0.9);
+}
+.todo__doneButton:disabled {
+    color: hsl(0, 0%, 60%);
+    cursor: auto;
 }
 
 @media (max-width: 768px) {

@@ -1,7 +1,15 @@
 {
     console.log("Good morning, Vietnam!");
 
-    let tasks = [];
+    let tasks = [{
+            content: "test",
+            done: false,
+        },
+        {
+            content: "test",
+            done: false,
+        },
+    ];
 
     const addNewTask = (input) => {
         tasks = [
@@ -17,12 +25,24 @@
         const isDone = tasks[editIndex].done;
         tasks = [
             ...tasks.slice(0, editIndex),
-            {...tasks[editIndex], done: !isDone},
+            {
+                ...tasks[editIndex],
+                done: !isDone,
+            },
             ...tasks.slice(editIndex + 1),
         ]
         render();
     }
+    const setEachDone = () => {
+        tasks = [
+            ...tasks,
+        ];
+        for (const task of tasks) {
+            task.done = true;
+        }
 
+        render();
+    };
     const removeTask = (removeIndex) => {
         tasks = [
             ...tasks.slice(0, removeIndex),
@@ -34,7 +54,7 @@
         const buttonsArea = document.querySelector(".js-todoHeader");
         let buttonsHTMLString = "";
         if (tasks.length !== 0) {
-                buttonsHTMLString = ` 
+            buttonsHTMLString = ` 
                 <h2 class="todo__title">Lista zadań</h2>                   
                 <button class="todo__doneButton js-hideDone">Pokaż ukończone</button>
                 <button class="todo__doneButton js-setEachDone">Ukończ wszystkie</button>`
@@ -67,12 +87,21 @@
         renderTasks();
         renderButtons();
         bind();
-
     };
 
     const bind = () => {
         const checkButtons = document.querySelectorAll(".js-checkButton");
         const removeButtons = document.querySelectorAll(".js-removeButton");
+        const setEachDoneButton = document.querySelector(".js-setEachDone");
+        const hideDoneButton = document.querySelector(".js-hideDone");
+
+        if (tasks.some(({done}) => done === false)){
+            setEachDoneButton.addEventListener("click", () => {
+                setEachDone();
+            })
+        } else {
+            setEachDoneButton.setAttribute("disabled", "");
+        }
 
         checkButtons.forEach((checkButton, index) => {
             checkButton.addEventListener("click", () => {
