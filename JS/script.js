@@ -1,9 +1,7 @@
 {
     console.log("Good morning, Vietnam!");
 
-    let tasks = [
-        {content: 'test', done: true}
-    ];
+    let tasks = [];
 
     const addNewTask = (input) => {
         tasks = [
@@ -22,12 +20,14 @@
             {...tasks[editIndex], done: !isDone},
             ...tasks.slice(editIndex + 1),
         ]
-        console.log(tasks)
         render();
     }
 
-    const removeTask = (index) => {
-        tasks.splice(index, 1);
+    const removeTask = (removeIndex) => {
+        tasks = [
+            ...tasks.slice(0, removeIndex),
+            ...tasks.slice(removeIndex + 1),
+        ]
         render();
     }
     const renderButtons = () => {
