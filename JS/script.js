@@ -56,7 +56,7 @@
         if (tasks.length !== 0) {
             buttonsHTMLString = ` 
                 <h2 class="todo__title">Lista zadań</h2>                   
-                <button class="todo__doneButton js-hideDone">Pokaż ukończone</button>
+                <button class="todo__doneButton js-hideDone">Ukryj ukończone</button>
                 <button class="todo__doneButton js-setEachDone">Ukończ wszystkie</button>`
         } else {
             buttonsHTMLString = `<h2 class=\"todo__title\">Lista zadań</h2>`
@@ -89,19 +89,27 @@
         bind();
     };
 
-    const bind = () => {
-        const checkButtons = document.querySelectorAll(".js-checkButton");
-        const removeButtons = document.querySelectorAll(".js-removeButton");
+    const checkButtonStatus = () => {
         const setEachDoneButton = document.querySelector(".js-setEachDone");
-        const hideDoneButton = document.querySelector(".js-hideDone");
-
-        if (tasks.some(({done}) => done === false)){
+        if (!(tasks.some(({done}) => done === false))) {
+            setEachDoneButton.setAttribute("disabled", "");
+        } 
+        else {
             setEachDoneButton.addEventListener("click", () => {
                 setEachDone();
             })
-        } else {
-            setEachDoneButton.setAttribute("disabled", "");
         }
+    }
+
+    const bind = () => {
+        const checkButtons = document.querySelectorAll(".js-checkButton");
+        const removeButtons = document.querySelectorAll(".js-removeButton");
+        const hideDoneButton = document.querySelector(".js-hideDone");
+
+        if(tasks.length !== 0){
+            checkButtonStatus();
+        } 
+        else {return};
 
         checkButtons.forEach((checkButton, index) => {
             checkButton.addEventListener("click", () => {
