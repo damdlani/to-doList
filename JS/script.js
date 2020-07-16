@@ -12,12 +12,12 @@
         render();
     }
 
-    const render = () => {
+    const renderTasks = () => {
         const tasksListElement = document.querySelector(".js-tasksList");
-        let htmlString = "";
+        let taskHTMLString = "";
         if (tasks.length !== 0){
             for (task of tasks) {
-                htmlString += `<li class="todo__task">
+                taskHTMLString += `<li class="todo__task">
                 <button class="todo__button todo__button--check js-checkButton">${task.done ? " <i class=\"fas fa-check\"></i>" : ""}</button>
                 <span class="todo__span ${task.done ? "todo__span--done" : ""} js-taskSpan">
                 ${task.content}
@@ -26,10 +26,13 @@
                 </li>`
             }
         } else {
-            htmlString = `<li class="todo__empty">Nie masz na razie żadnych zadań.</li>`
+            taskHTMLString = `<li class="todo__empty">Nie masz na razie żadnych zadań.</li>`
         }
-        tasksListElement.innerHTML = htmlString;
-        
+        tasksListElement.innerHTML = taskHTMLString;
+    }
+
+    const render = () => {
+        renderTasks();        
         bind();
 
     };

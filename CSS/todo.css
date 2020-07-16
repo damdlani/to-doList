@@ -16,11 +16,31 @@
     margin: 0 0 3px;
     padding: 20px 30px;
     background-color: white;
+    flex-grow: 1;
 }
 @media (max-width: 768px){
     .todo__title {
         font-size: 22px;
     }
+}
+.todo__header {
+    display: flex;
+    margin: 0 0 3px;
+    background-color: white;
+}
+.todo__doneButton {
+    align-self: center;
+    padding: 5px;
+    margin: 10px;
+    border: none;
+    background-color: transparent;
+    color: hsl(180, 66%, 28%);
+    font-size: 18px;
+    transition: color .2s;
+}
+.todo__doneButton:hover {
+    color: hsl(180, 66%, 20%);
+    cursor: pointer;
 }
 
 .todo__tasks {
@@ -50,6 +70,7 @@
     border: none;
     color: white;
     font-size: 16px;
+    transition: .3s;
 }
 @media (max-width: 768px) {
     .todo__input {
@@ -64,6 +85,7 @@
 .todo__submit:hover {
     cursor: pointer;
     color: #ddd;
+    transform: scale(1.05)
 }
 
 .todo__submit:active {
@@ -100,6 +122,7 @@
     padding: 10px;
     border: none;
     outline: none;
+    transition: .3s;
 }
 @media (max-width: 400px){
     .todo__button {
@@ -113,12 +136,19 @@
 }
 .todo__button:hover {
     cursor: pointer;
+
 }
 .todo__button--check {
     background-color: rgb(5, 104, 10);
 }
 .todo__button--remove {
     background-color: rgb(104, 5, 5);
+}
+.todo__button--check:hover {
+    background-color: hsl(123, 91%, 25%);
+}
+.todo__button--remove:hover {
+    background-color: hsl(0, 91%, 25%);
 }
 @media (max-width: 400px){
     .todo__button--remove {
