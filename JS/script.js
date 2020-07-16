@@ -1,7 +1,17 @@
 {
     console.log("Good morning, Vietnam!");
 
-    const tasks = [];
+    let tasks = [];
+
+    const addNewTask = (input) => {
+        tasks = [
+            ...tasks,
+            {
+                content: `${input.value}`,
+                done: false
+            },
+        ]
+    }
 
     const setDone = (index) => {
         tasks[index].done = !tasks[index].done;
@@ -11,12 +21,25 @@
         tasks.splice(index, 1);
         render();
     }
+    const renderButtons = () => {
+        const buttonsArea = document.querySelector(".js-todoHeader");
+        let buttonsHTMLString = "";
+        if (tasks.length !== 0) {
+                buttonsHTMLString = ` 
+                <h2 class="todo__title">Lista zadań</h2>                   
+                <button class="todo__doneButton js-hideDone">Pokaż ukończone</button>
+                <button class="todo__doneButton js-setEachDone">Ukończ wszystkie</button>`
+        } else {
+            buttonsHTMLString = `<h2 class=\"todo__title\">Lista zadań</h2>`
+        }
+        buttonsArea.innerHTML = buttonsHTMLString;
+    }
 
     const renderTasks = () => {
         const tasksListElement = document.querySelector(".js-tasksList");
         let taskHTMLString = "";
-        if (tasks.length !== 0){
-            for (task of tasks) {
+        if (tasks.length !== 0) {
+            for (const task of tasks) {
                 taskHTMLString += `<li class="todo__task">
                 <button class="todo__button todo__button--check js-checkButton">${task.done ? " <i class=\"fas fa-check\"></i>" : ""}</button>
                 <span class="todo__span ${task.done ? "todo__span--done" : ""} js-taskSpan">
@@ -32,7 +55,8 @@
     }
 
     const render = () => {
-        renderTasks();        
+        renderTasks();
+        renderButtons();
         bind();
 
     };
@@ -56,10 +80,7 @@
 
     const onFormSubmit = (input) => {
         if (input.value.trim()) {
-            tasks.push(task = {
-                content: `${input.value}`,
-                done: false
-            });
+            addNewTask(input);
             setFocusClear(input);
             render();
         } else {
