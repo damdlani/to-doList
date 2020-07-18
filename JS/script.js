@@ -1,15 +1,7 @@
 {
     console.log("Good morning, Vietnam!");
 
-    let tasks = [{
-        content: "test",
-        done: true,
-    },
-    {
-        content: "test",
-        done: false,
-    },
-    ];
+    let tasks = [];
     const renderButtons = () => {
         const buttonsArea = document.querySelector(".js-todoHeader");
         let buttonsHTMLString = "";
