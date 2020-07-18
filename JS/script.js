@@ -70,12 +70,17 @@
     const hideButtonInnertext = () => {
         const hideDoneButton = document.querySelector(".js-hideDone");
 
-        hideDoneButton.addEventListener("click", () => {
-            hideDoneButton.classList.toggle("js-clicked");
-            hideDoneButton.innerHTML === "Ukryj ukończone" ? hideDoneButton.innerHTML = "Pokaż wszystkie" : hideDoneButton.innerHTML = "Ukryj ukończone";
-            hideDoneButton.classList.contains("js-clicked") ? renderUndoneTasks() : render();
-            
-        });
+        if(tasks.some(({done}) => done === true)){
+            hideDoneButton.addEventListener("click", () => {
+                hideDoneButton.classList.toggle("js-clicked");
+                hideDoneButton.innerHTML === "Ukryj ukończone" ? hideDoneButton.innerHTML = "Pokaż wszystkie" : hideDoneButton.innerHTML = "Ukryj ukończone";
+                hideDoneButton.classList.contains("js-clicked") ? renderUndoneTasks() : render();
+                
+            });
+        }
+        else {
+            hideDoneButton.setAttribute("disabled", "");
+        }
         
     }
 
