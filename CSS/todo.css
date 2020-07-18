@@ -70,6 +70,12 @@
         padding: 10px;
     }
 }
+@media (max-width: 400px) {
+    .todo__doneButton {
+        padding: 5px;
+        margin: 5px;
+    }
+}
 
 .todo__tasks {
     background-color: white;
@@ -86,6 +92,11 @@
     flex-grow: 5;
     margin: 5px;
     padding: 5px 5px 5px 10px;
+}
+@media (max-width: 330px) {
+    .todo__input::placeholder {
+        font-size: 14px;
+    }
 }
 
 .todo__submit {
@@ -223,7 +234,5 @@
 @media (max-width: 400px) {
     .todo__empty {
         font-size: 12px;
-        margin-top: 20px;
-
     }
 }

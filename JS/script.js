@@ -63,7 +63,7 @@
                 </li>`
             }
         } else {
-            undoneTaskHTMLString = `<li class="todo__empty">Nie masz na razie żadnych zadań.</li>`
+            undoneTaskHTMLString = `<li class="todo__empty">Nie masz na razie żadnych niezrobionych zadań.</li>`
         }
         tasksListElement.innerHTML = undoneTaskHTMLString;
     };
