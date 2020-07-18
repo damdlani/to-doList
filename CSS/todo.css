@@ -61,7 +61,10 @@
     color: hsl(0, 0%, 60%);
     cursor: auto;
 }
-
+.todo__doneButton:focus {
+    outline: none;
+    color: hsl(180, 66%, 40%);
+}
 @media (max-width: 768px) {
     .todo__doneButton {
         padding: 10px;
