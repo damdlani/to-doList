@@ -6,24 +6,19 @@
 
     const setHideDoneTask = () => {
         const hideDoneButton = document.querySelector(".js-hideDone");
-        if (tasks.some(({ done }) => done === true)) {
-            hideDoneButton.addEventListener("click", () => {
-                hideDoneTask = !hideDoneTask;
-                render();
-            });
-        }
-        else {
-            hideDoneButton.setAttribute("disabled", "");
-        }
-    };
 
+        hideDoneButton.addEventListener("click", () => {
+            hideDoneTask = !hideDoneTask;
+            render();
+        });
+    }
     const renderButtons = () => {
         const buttonsArea = document.querySelector(".js-todoHeader");
         let buttonsHTMLString = "";
         if (tasks.length !== 0) {
             buttonsHTMLString = ` 
                 <h2 class="todo__title">Lista zadań</h2>                   
-                <button class="todo__doneButton js-hideDone">${hideDoneTask === false ? "Ukryj ukończone" : "Pokaż wszystkie"}</button>
+                <button ${tasks.every(({ done }) => done === false) ? " disabled" : ""} class="todo__doneButton js-hideDone">${hideDoneTask === false ? "Ukryj ukończone" : "Pokaż wszystkie"}</button>
                 <button class="todo__doneButton js-setEachDone">Ukończ wszystkie</button>`
         } else {
             buttonsHTMLString = `<h2 class=\"todo__title\">Lista zadań</h2>`
@@ -126,6 +121,7 @@
                 done: false,
             },
         ];
+        hideDoneTask = false;
         render();
     };
     const setFocusClear = (input) => {
