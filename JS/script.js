@@ -2,21 +2,22 @@
     console.log("Good morning, Vietnam!");
 
     let tasks = [];
+    let hideDoneTask = false;
+
     const renderButtons = () => {
         const buttonsArea = document.querySelector(".js-todoHeader");
         let buttonsHTMLString = "";
         if (tasks.length !== 0) {
             buttonsHTMLString = ` 
                 <h2 class="todo__title">Lista zadań</h2>                   
-                <button class="todo__doneButton js-hideDone">Ukryj ukończone</button>
+                <button class="todo__doneButton js-hideDone">${hideDoneTask === false ? "Ukryj ukończone" : "Pokaż wszystkie"}</button>
                 <button class="todo__doneButton js-setEachDone">Ukończ wszystkie</button>`
         } else {
             buttonsHTMLString = `<h2 class=\"todo__title\">Lista zadań</h2>`
         }
         buttonsArea.innerHTML = buttonsHTMLString;
     }
-
-    const renderAllTasks = () => {
+    const renderTasks = (tasks) => {
         const tasksListElement = document.querySelector(".js-tasksList");
         let taskHTMLString = "";
         if (tasks.length !== 0) {
@@ -30,50 +31,31 @@
                 </li>`
             }
         } else {
-            taskHTMLString = `<li class="todo__empty">Nie masz na razie żadnych zadań.</li>`
+            taskHTMLString = `<li class="todo__empty">Nie masz na razie żadnych ${hideDoneTask === true ? "niezrobionych" : ""} zadań.</li>`
         }
         tasksListElement.innerHTML = taskHTMLString;
     }
 
     const render = () => {
-        renderAllTasks();
+        renderTasks(tasks);
         renderButtons();
         bind();
     };
-    const renderUndoneTasks = () => {
-        const undoneTasks = tasks.filter(({ done }) => done === false);
-        const tasksListElement = document.querySelector(".js-tasksList");
-        let undoneTaskHTMLString = "";
-        if (undoneTasks.length !== 0) {
-            for (const task of undoneTasks) {
-                undoneTaskHTMLString += `<li class="todo__task">
-                <button class="todo__button todo__button--check js-checkButton">${task.done ? " <i class=\"fas fa-check\"></i>" : ""}</button>
-                <span class="todo__span ${task.done ? "todo__span--done" : ""} js-taskSpan">
-                ${task.content}
-                </span>
-                <button class="todo__button todo__button--remove js-removeButton"><i class="fas fa-trash-alt"></i></button>
-                </li>`
-            }
-        } else {
-            undoneTaskHTMLString = `<li class="todo__empty">Nie masz na razie żadnych niezrobionych zadań.</li>`
-        }
-        tasksListElement.innerHTML = undoneTaskHTMLString;
-    };
+    
     const hideButtonInnertext = () => {
         const hideDoneButton = document.querySelector(".js-hideDone");
+        const undoneTasks = tasks.filter(({ done }) => done === false);
 
         if(tasks.some(({done}) => done === true)){
             hideDoneButton.addEventListener("click", () => {
-                hideDoneButton.classList.toggle("js-clicked");
-                hideDoneButton.innerHTML === "Ukryj ukończone" ? hideDoneButton.innerHTML = "Pokaż wszystkie" : hideDoneButton.innerHTML = "Ukryj ukończone";
-                hideDoneButton.classList.contains("js-clicked") ? renderUndoneTasks() : render();
-                
+                hideDoneTask = !hideDoneTask;
+                console.log(hideDoneTask)
+                hideDoneTask === true ? (render(), renderTasks(undoneTasks)) : render();
             });
         }
         else {
             hideDoneButton.setAttribute("disabled", "");
         }
-        
     }
 
 
