@@ -4,6 +4,19 @@
     let tasks = [];
     let hideDoneTask = false;
 
+    const setHideDoneTask = () => {
+        const hideDoneButton = document.querySelector(".js-hideDone");
+        if(tasks.some(({done}) => done === true)){
+            hideDoneButton.addEventListener("click", () => {
+                hideDoneTask = !hideDoneTask;
+                render();
+            });
+        }
+        else {
+            hideDoneButton.setAttribute("disabled", "");
+        }
+    };
+
     const renderButtons = () => {
         const buttonsArea = document.querySelector(".js-todoHeader");
         let buttonsHTMLString = "";
@@ -16,6 +29,8 @@
             buttonsHTMLString = `<h2 class=\"todo__title\">Lista zadań</h2>`
         }
         buttonsArea.innerHTML = buttonsHTMLString;
+        setHideDoneTask();
+        checkButtonStatus();
     }
     const renderTasks = (tasks) => {
         const tasksListElement = document.querySelector(".js-tasksList");
@@ -37,44 +52,17 @@
     }
 
     const render = () => {
-        renderTasks(tasks);
-        renderButtons();
-        bind();
-    };
-    
-    const hideButtonInnertext = () => {
-        const hideDoneButton = document.querySelector(".js-hideDone");
         const undoneTasks = tasks.filter(({ done }) => done === false);
 
-        if(tasks.some(({done}) => done === true)){
-            hideDoneButton.addEventListener("click", () => {
-                hideDoneTask = !hideDoneTask;
-                console.log(hideDoneTask)
-                hideDoneTask === true ? (render(), renderTasks(undoneTasks)) : render();
-            });
-        }
-        else {
-            hideDoneButton.setAttribute("disabled", "");
-        }
-    }
-
-
-    const bind = () => {
+        hideDoneTask === true ? renderTasks(undoneTasks) : renderTasks(tasks);
+        renderButtons();
+        bindListeners();
+    };
+    
+    const bindListeners = () => {
         const checkButtons = document.querySelectorAll(".js-checkButton");
         const removeButtons = document.querySelectorAll(".js-removeButton");
         
-
-        if (tasks.length !== 0) {
-            hideButtonInnertext();
-        }
-        else { return };
-        
-
-        if (tasks.length !== 0) {
-            checkButtonStatus();
-        }
-        else { return };
-
         checkButtons.forEach((checkButton, index) => {
             checkButton.addEventListener("click", () => {
                 setDone(index);
@@ -99,13 +87,10 @@
         }
     };
     const setEachDone = () => {
-        tasks = [
-            ...tasks,
-        ];
-        for (const task of tasks) {
-            task.done = true;
-        }
-
+        tasks = tasks.map((task) => ({
+            ...task,
+            done: true,
+        }));
         render();
     };
     const setDone = (editIndex) => {
