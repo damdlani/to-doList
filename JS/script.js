@@ -6,7 +6,7 @@
 
     const setHideDoneTask = () => {
         const hideDoneButton = document.querySelector(".js-hideDone");
-        if(tasks.some(({done}) => done === true)){
+        if (tasks.some(({ done }) => done === true)) {
             hideDoneButton.addEventListener("click", () => {
                 hideDoneTask = !hideDoneTask;
                 render();
@@ -29,8 +29,11 @@
             buttonsHTMLString = `<h2 class=\"todo__title\">Lista zadań</h2>`
         }
         buttonsArea.innerHTML = buttonsHTMLString;
-        setHideDoneTask();
-        checkButtonStatus();
+        if (tasks.length !== 0) {
+            setHideDoneTask();
+            checkButtonStatus();
+        }
+        else { return };
     }
     const renderTasks = (tasks) => {
         const tasksListElement = document.querySelector(".js-tasksList");
@@ -58,11 +61,11 @@
         renderButtons();
         bindListeners();
     };
-    
+
     const bindListeners = () => {
         const checkButtons = document.querySelectorAll(".js-checkButton");
         const removeButtons = document.querySelectorAll(".js-removeButton");
-        
+
         checkButtons.forEach((checkButton, index) => {
             checkButton.addEventListener("click", () => {
                 setDone(index);
