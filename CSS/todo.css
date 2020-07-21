@@ -37,45 +37,7 @@
     }
 }
 
-.todo__doneButton {
-    align-self: center;
-    padding: 5px;
-    margin: 10px;
-    border: none;
-    background-color: transparent;
-    color: hsl(180, 66%, 20%);
-    font-size: 18px;
-    transition: color .2s, transform .2s;
-}
 
-.todo__doneButton:hover {
-    color: hsl(180, 66%, 40%);
-    cursor: pointer;
-}
-
-.todo__doneButton:active {
-    transform: scale(0.9);
-    outline: none;
-}
-.todo__doneButton:disabled {
-    color: hsl(0, 0%, 60%);
-    cursor: auto;
-}
-.todo__doneButton:focus {
-    outline: none;
-    color: hsl(180, 66%, 40%);
-}
-@media (max-width: 768px) {
-    .todo__doneButton {
-        padding: 10px;
-    }
-}
-@media (max-width: 400px) {
-    .todo__doneButton {
-        padding: 5px;
-        margin: 5px;
-    }
-}
 
 .todo__tasks {
     background-color: white;

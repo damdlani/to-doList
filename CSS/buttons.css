@@ -1,0 +1,50 @@
+.buttons {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+@media (max-width: 768px) {
+    .buttons {
+        flex-direction: column;
+    }
+}
+
+.buttons__done {
+    flex-grow: 1;
+    padding: 5px;
+    margin: 10px;
+    border: none;
+    background-color: transparent;
+    color: hsl(180, 66%, 20%);
+    font-size: 18px;
+    transition: color .2s, transform .2s;
+}
+
+.buttons__done:hover {
+    color: hsl(180, 66%, 40%);
+    cursor: pointer;
+}
+
+.buttons__done:active {
+    transform: scale(0.9);
+    outline: none;
+}
+.buttons__done:disabled {
+    color: hsl(0, 0%, 60%);
+    cursor: auto;
+}
+.buttons__done:focus {
+    outline: none;
+    color: hsl(180, 66%, 40%);
+}
+@media (max-width: 768px) {
+    .buttons__done {
+        padding: 10px;
+    }
+}
+@media (max-width: 400px) {
+    .buttons__done {
+        padding: 5px;
+        margin: 5px;
+    }
+}

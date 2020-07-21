@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="CSS/footer.css">
     <link rel="stylesheet" href="CSS/todo.css">
     <link rel="stylesheet" href="CSS/header.css">
+    <link rel="stylesheet" href="CSS/buttons.css">
     <script defer src="JS/script.js"></script>
     <script src="https://kit.fontawesome.com/478e816e7d.js" crossorigin="anonymous"></script>
 </head>
@@ -28,12 +29,16 @@
             <section class="todo__new">
                 <h2 class="todo__title">Dodaj nowe zadanie</h2>
                 <form action="" class="todo__form js-form">
-                    <input class="todo__input js-input" autofocus type="text" placeholder="Co jest do zrobienia?" class="todo__input">
+                    <input class="todo__input js-input" autofocus type="text" placeholder="Co jest do zrobienia?"
+                        class="todo__input">
                     <button class="todo__submit js-buttonSubmit">Dodaj zadanie</button>
                 </form>
             </section>
             <section class="todo__list">
-                <div class="todo__header js-todoHeader">
+                <div class="todo__header">
+                    <h2 class="todo__title">Lista zadań</h2>
+                    <div class="buttons js-actionButtons">
+                    </div>
                 </div>
                 <div class="todo__tasks">
                     <ul class="todo__ul js-tasksList">
@@ -44,4 +49,5 @@
         <footer class="footer">&copy;Krzysztof Kwieciński 2020</footer>
     </div>
 </body>
+
 </html>

@@ -1,7 +1,9 @@
 {
     console.log("Good morning, Vietnam!");
 
-    let tasks = [];
+    let tasks = [
+        {content: "test", done: true}
+    ];
     let hideDoneTask = false;
 
     const setHideDoneTask = () => {
@@ -13,15 +15,15 @@
         });
     }
     const renderButtons = () => {
-        const buttonsArea = document.querySelector(".js-todoHeader");
+        const buttonsArea = document.querySelector(".js-actionButtons");
         let buttonsHTMLString = "";
         if (tasks.length !== 0) {
             buttonsHTMLString = ` 
-                <h2 class="todo__title">Lista zadań</h2>                   
-                <button ${tasks.every(({ done }) => done === false) ? " disabled" : ""} class="todo__doneButton js-hideDone">${hideDoneTask === false ? "Ukryj ukończone" : "Pokaż wszystkie"}</button>
-                <button class="todo__doneButton js-setEachDone">Ukończ wszystkie</button>`
+                                   
+                <button ${tasks.every(({ done }) => done === false) ? " disabled" : ""} class="buttons__done js-hideDone">${hideDoneTask === false ? "Ukryj ukończone" : "Pokaż wszystkie"}</button>
+                <button class="buttons__done js-setEachDone">Ukończ wszystkie</button>`
         } else {
-            buttonsHTMLString = `<h2 class=\"todo__title\">Lista zadań</h2>`
+            buttonsHTMLString = ``
         }
         buttonsArea.innerHTML = buttonsHTMLString;
         if (tasks.length !== 0) {
