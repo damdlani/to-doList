@@ -1,9 +1,7 @@
 {
     console.log("Good morning, Vietnam!");
 
-    let tasks = [
-        { content: "test", done: true }
-    ];
+    let tasks = [];
     let hideDoneTask = false;
 
     const setHideDoneTask = () => {
