@@ -25,21 +25,23 @@
     }
     const renderTasks = (tasks) => {
         const tasksListElement = document.querySelector(".js-tasksList");
-        let taskHTMLString = "";
         if (tasks.length !== 0) {
-            for (const task of tasks) {
-                taskHTMLString += `<li class="todo__task">
-                <button class="todo__button todo__button--check js-checkButton">${task.done ? " <i class=\"fas fa-check\"></i>" : ""}</button>
-                <span class="todo__span ${task.done ? "todo__span--done" : ""} js-taskSpan">
-                ${task.content}
-                </span>
-                <button class="todo__button todo__button--remove js-removeButton"><i class="fas fa-trash-alt"></i></button>
-                </li>`
-            }
+            const taskToHTML = task => `
+            <li class="todo__task">
+            <button class="todo__button todo__button--check js-checkButton">
+            ${task.done ? " <i class=\"fas fa-check\"></i>" : ""}</button>
+
+            <span class="todo__span ${task.done ? "todo__span--done" : ""} js-taskSpan">
+            ${task.content}</span>
+
+            <button class="todo__button todo__button--remove js-removeButton"><i class="fas fa-trash-alt"></i></button>
+            </li>
+            `
+            tasksListElement.innerHTML = tasks.map(taskToHTML).join("");
         } else {
-            taskHTMLString = `<li class="todo__empty">Nie masz na razie żadnych ${hideDoneTask === true ? "niezrobionych" : ""} zadań.</li>`
+            tasksListElement.innerHTML = `<li class="todo__empty">Nie masz na razie żadnych ${hideDoneTask === true ? "niezrobionych" : ""} zadań.</li>`;
         }
-        tasksListElement.innerHTML = taskHTMLString;
+
     }
 
     const render = () => {
@@ -64,8 +66,7 @@
                 setHideDoneTask()
             });
         }
-    }
-
+    };
     const bindSingleTaskButtons = () => {
         const checkButtons = document.querySelectorAll(".js-checkButton");
         const removeButtons = document.querySelectorAll(".js-removeButton");
