@@ -2,17 +2,13 @@
     console.log("Good morning, Vietnam!");
 
     let tasks = [
-        {content: "test", done: true}
+        { content: "test", done: true }
     ];
     let hideDoneTask = false;
 
     const setHideDoneTask = () => {
-        const hideDoneButton = document.querySelector(".js-hideDone");
-
-        hideDoneButton.addEventListener("click", () => {
-            hideDoneTask = !hideDoneTask;
-            render();
-        });
+        hideDoneTask = !hideDoneTask;
+        render();
     }
     const renderButtons = () => {
         const buttonsArea = document.querySelector(".js-actionButtons");
@@ -21,16 +17,11 @@
             buttonsHTMLString = ` 
                                    
                 <button ${tasks.every(({ done }) => done === false) ? " disabled" : ""} class="buttons__done js-hideDone">${hideDoneTask === false ? "Ukryj ukończone" : "Pokaż wszystkie"}</button>
-                <button class="buttons__done js-setEachDone">Ukończ wszystkie</button>`
+                <button ${tasks.every(({ done }) => done === true) ? " disabled" : ""} class="buttons__done js-setEachDone">Ukończ wszystkie</button>`
         } else {
             buttonsHTMLString = ``
         }
         buttonsArea.innerHTML = buttonsHTMLString;
-        if (tasks.length !== 0) {
-            setHideDoneTask();
-            checkButtonStatus();
-        }
-        else { return };
     }
     const renderTasks = (tasks) => {
         const tasksListElement = document.querySelector(".js-tasksList");
@@ -55,11 +46,27 @@
         const undoneTasks = tasks.filter(({ done }) => done === false);
 
         hideDoneTask === true ? renderTasks(undoneTasks) : renderTasks(tasks);
+        bindSingleTaskButtons();
         renderButtons();
-        bindListeners();
+        bindAllTasksButtons();
     };
+    const bindAllTasksButtons = () => {
+        const setEachDoneButton = document.querySelector(".js-setEachDone");
+        const hideDoneButton = document.querySelector(".js-hideDone");
 
-    const bindListeners = () => {
+        if (setEachDoneButton) {
+            setEachDoneButton.addEventListener("click", () => {
+                setEachDone();
+            })
+        }
+        if (hideDoneButton) {
+            hideDoneButton.addEventListener("click", () => {
+                setHideDoneTask()
+            });
+        }
+    }
+
+    const bindSingleTaskButtons = () => {
         const checkButtons = document.querySelectorAll(".js-checkButton");
         const removeButtons = document.querySelectorAll(".js-removeButton");
 
@@ -75,17 +82,6 @@
             })
         });
     }
-    const checkButtonStatus = () => {
-        const setEachDoneButton = document.querySelector(".js-setEachDone");
-        if ((tasks.every(({ done }) => done === true))) {
-            setEachDoneButton.setAttribute("disabled", "");
-        }
-        else {
-            setEachDoneButton.addEventListener("click", () => {
-                setEachDone();
-            })
-        }
-    };
     const setEachDone = () => {
         tasks = tasks.map((task) => ({
             ...task,
