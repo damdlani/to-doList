@@ -21,11 +21,17 @@
         }
         buttonsArea.innerHTML = buttonsHTMLString;
     }
-    const renderTasks = (tasks) => {
+    const renderTasks = () => {
         const tasksListElement = document.querySelector(".js-tasksList");
-        if (tasks.length !== 0) {
+        if (tasks.length === 0) {
+            tasksListElement.innerHTML = `<li class="todo__empty">Nie masz na razie żadnych zadań.</li>`;
+        } 
+        else if(hideDoneTask && tasks.every(({done}) => done)) {
+            tasksListElement.innerHTML = `<li class="todo__empty">Nie masz na razie żadnych niezrobionych zadań.</li>`;
+        }
+        else {
             const taskToHTML = task => `
-            <li class="todo__task">
+            <li class="todo__task ${hideDoneTask === true && task.done ? "todo__hidden" : ""}">
             <button class="todo__button todo__button--check js-checkButton">
             ${task.done ? " <i class=\"fas fa-check\"></i>" : ""}</button>
 
@@ -36,16 +42,12 @@
             </li>
             `
             tasksListElement.innerHTML = tasks.map(taskToHTML).join("");
-        } else {
-            tasksListElement.innerHTML = `<li class="todo__empty">Nie masz na razie żadnych ${hideDoneTask === true ? "niezrobionych" : ""} zadań.</li>`;
         }
 
     }
 
     const render = () => {
-        const undoneTasks = tasks.filter(({ done }) => done === false);
-
-        hideDoneTask === true ? renderTasks(undoneTasks) : renderTasks(tasks);
+        renderTasks();
         bindSingleTaskButtons();
         renderButtons();
         bindAllTasksButtons();
@@ -118,7 +120,7 @@
                 done: false,
             },
         ];
-        hideDoneTask = false;
+        // hideDoneTask = false;
         render();
     };
     const setFocusClear = (input) => {

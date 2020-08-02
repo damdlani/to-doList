@@ -198,3 +198,6 @@
         font-size: 12px;
     }
 }
+.todo__hidden {
+    display: none;
+}
