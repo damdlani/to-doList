@@ -43,54 +43,7 @@
     background-color: white;
 }
 
-.todo__form {
-    display: flex;
-    flex-wrap: wrap;
-    background-color: white;
-    padding: 30px;
-}
 
-.todo__input {
-    flex-grow: 5;
-    margin: 5px;
-    padding: 5px 5px 5px 10px;
-}
-@media (max-width: 330px) {
-    .todo__input::placeholder {
-        font-size: 14px;
-    }
-}
-
-.todo__submit {
-    padding: 10px 20px;
-    margin: 5px;
-    background-color: teal;
-    border: none;
-    color: white;
-    font-size: 16px;
-    transition: .3s;
-}
-
-@media (max-width: 768px) {
-    .todo__input {
-        width: 100%;
-    }
-
-    .todo__submit {
-        width: 100%;
-    }
-}
-
-.todo__submit:hover {
-    cursor: pointer;
-    color: #ddd;
-    transform: scale(1.05)
-}
-
-.todo__submit:active {
-    color: black;
-    outline: none;
-}
 
 .todo__ul {
     padding: 30px;

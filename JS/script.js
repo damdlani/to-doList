@@ -25,11 +25,11 @@
         const tasksListElement = document.querySelector(".js-tasksList");
         if (tasks.length === 0) {
             tasksListElement.innerHTML = `<li class="todo__empty">Nie masz na razie żadnych zadań.</li>`;
-        } 
-        else if(hideDoneTask && tasks.every(({done}) => done)) {
+        } else if (hideDoneTask && tasks.every(({
+                done
+            }) => done)) {
             tasksListElement.innerHTML = `<li class="todo__empty">Nie masz na razie żadnych niezrobionych zadań.</li>`;
-        }
-        else {
+        } else {
             const taskToHTML = task => `
             <li class="todo__task ${hideDoneTask === true && task.done ? "todo__hidden" : ""}">
             <button class="todo__button todo__button--check js-checkButton">
